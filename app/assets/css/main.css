@@ -1,0 +1,89 @@
+/* Load Tailwind CSS 4 */
+@import "tailwindcss";
+
+/* Design tokens from DESIGN.md. Each token becomes Tailwind classes (example: bg-oxford-blue). */
+@theme {
+  /* Main font for the whole site */
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand colors */
+  --color-oxford-blue: #002046;
+  --color-oxford-light: #0a3166; /* hover color for Oxford Blue buttons */
+  --color-deep-teal: #0f766e;
+  --color-deep-teal-light: #14b8a6;
+  --color-soft-amber: #f4b860;
+  --color-off-white: #f4f7fb;
+  --color-slate-body: #334155;
+  --color-border-subtle: #dce5ef;
+
+  /* Shadows from DESIGN.md (Level 1 and Level 2) */
+  --shadow-card: 0 2px 8px -2px rgb(0 32 70 / 0.04);
+  --shadow-card-hover: 0 8px 24px -4px rgb(0 32 70 / 0.08);
+}
+
+@layer base {
+  /* Smooth scrolling when a link jumps to a section */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* People who prefer less motion get instant jumps */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* Keep a gap (the height of the fixed navbar) when jumping to a section */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+
+  /* Default page colors and font */
+  body {
+    background-color: var(--color-off-white);
+    color: var(--color-slate-body);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Color of highlighted (selected) text */
+  ::selection {
+    background-color: rgb(15 118 110 / 0.15);
+    color: var(--color-deep-teal);
+  }
+
+  /* Visible focus ring for keyboard users (Deep Teal, as in DESIGN.md) */
+  :focus-visible {
+    outline: 2px solid var(--color-deep-teal);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Styles for the Material Symbols icon font. Tailwind classes like text-[20px] can still change the size. */
+  .material-symbols-outlined {
+    font-family: "Material Symbols Outlined";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    display: inline-block;
+    /* Reserve a square box so the page does not jump while the icon font loads */
+    width: 1em;
+    height: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    letter-spacing: normal;
+    text-transform: none;
+    direction: ltr;
+    font-feature-settings: "liga";
+    font-variation-settings: "FILL" 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* A filled version of an icon (used for stars) */
+  .icon-filled {
+    font-variation-settings: "FILL" 1;
+  }
+}
