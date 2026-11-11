@@ -6,10 +6,12 @@ const mainFontUrl =
 // Names of every icon used on the site. Keep this list in A-Z order.
 // If you use a new icon later, add its name here, otherwise you will see the icon name as text.
 const iconNames = [
-  'arrow_forward', 'auto_awesome', 'bolt', 'calendar_today', 'chat',
-  'chat_bubble_outline', 'check_circle', 'close', 'diversity_3', 'expand_more',
-  'favorite', 'forum', 'lock_open', 'menu', 'psychology', 'public',
-  'record_voice_over', 'schedule', 'school', 'send', 'south', 'star',
+  'arrow_back', 'arrow_forward', 'auto_awesome', 'bolt', 'calendar_today', 'chat',
+  'chat_bubble_outline', 'check', 'check_circle', 'close', 'diversity_3', 'error',
+  'expand_more', 'favorite', 'forum', 'groups', 'groups_2', 'info', 'lock',
+  'lock_clock', 'lock_open', 'menu', 'play_arrow', 'play_circle', 'psychology',
+  'public', 'record_voice_over', 'schedule', 'school', 'search', 'send',
+  'sentiment_very_satisfied', 'shield_with_heart', 'smart_display', 'south', 'star',
   'tips_and_updates', 'verified', 'verified_user',
 ]
 

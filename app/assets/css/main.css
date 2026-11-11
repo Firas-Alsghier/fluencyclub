@@ -16,6 +16,14 @@
   --color-slate-body: #334155;
   --color-border-subtle: #dce5ef;
 
+  /* Light blue surfaces from DESIGN.md (info boxes, footer, progress track) */
+  --color-surface-low: #eff4ff;
+  --color-surface-mid: #e6eeff;
+  --color-surface-high: #dde9ff;
+
+  /* Error red for form messages */
+  --color-error: #ba1a1a;
+
   /* Shadows from DESIGN.md (Level 1 and Level 2) */
   --shadow-card: 0 2px 8px -2px rgb(0 32 70 / 0.04);
   --shadow-card-hover: 0 8px 24px -4px rgb(0 32 70 / 0.08);
@@ -85,5 +93,43 @@
   /* A filled version of an icon (used for stars) */
   .icon-filled {
     font-variation-settings: "FILL" 1;
+  }
+
+  /* Shared look for text inputs, selects and the searchable dropdown (see DESIGN.md "Inputs & Form Fields") */
+  .form-control {
+    display: block;
+    width: 100%;
+    height: 2.75rem;
+    padding: 0 0.875rem;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.5rem;
+    background-color: #fff;
+    color: var(--color-oxford-blue);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  /* Grey placeholder text */
+  .form-control::placeholder {
+    color: #94a3b8;
+  }
+
+  /* Teal border and soft glow when the field is focused */
+  .form-control:focus,
+  .form-control:focus-visible {
+    outline: none;
+    border-color: var(--color-deep-teal);
+    box-shadow: 0 0 0 3px rgb(15 118 110 / 0.12);
+  }
+
+  /* Red border when the field has an error */
+  .form-control[aria-invalid="true"] {
+    border-color: var(--color-error);
+  }
+
+  /* Red glow instead of teal when an invalid field is focused */
+  .form-control[aria-invalid="true"]:focus {
+    box-shadow: 0 0 0 3px rgb(186 26 26 / 0.12);
   }
 }

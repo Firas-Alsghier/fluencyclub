@@ -44,3 +44,23 @@ export const NAV_LINKS = [
   { label: 'Pricing', href: '/#pricing' },
   { label: 'FAQ', href: '/#faq' },
 ]
+
+// ---- Enrollment page settings ----
+
+// The youngest age allowed to join
+export const MIN_STUDENT_AGE = 16
+
+// The oldest age accepted (this only catches typing mistakes like 250)
+export const MAX_STUDENT_AGE = 99
+
+// The "How to join" walkthrough video. There is NO real video yet.
+export const WALKTHROUGH_VIDEO = {
+  // PLACEHOLDER: leave empty until you have a real video file.
+  // Later put its address here, for example '/videos/walkthrough.mp4' (file saved in public/videos/).
+  videoUrl: '',
+  // TEMPORARY thumbnail from the Google Stitch design. Replace it with your own image later.
+  posterUrl:
+    'https://lh3.googleusercontent.com/aida-public/AB6AXuAAYng1u3SWEkhNkOUja95RlJMARjDeeWKimvW0nnYLBBTQozp78RgxkHSbetQ13koLvmVDN69yiuROb99yqViCFN5ymMTOSl1MVarWBT-DAwKOUkoE9CPA7ZxjvXuYPAVKvKaFSfC5f_78TJX4SKIcIA0PWdbTVMI8iQ9HXqectFRTohHgMAUn5Rh4KhHAzM42JLzMHvfUC7OrO97JWd2huApF4qJOUJ5d0I5le9o',
+  // Length shown on the thumbnail, for example '1:14 min'. Leave empty until the video exists.
+  durationLabel: '',
+}
