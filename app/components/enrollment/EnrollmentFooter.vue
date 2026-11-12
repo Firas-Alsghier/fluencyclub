@@ -1,13 +1,29 @@
 <script setup>
+// A page can give its own notice and badges. If it gives none (null), the default ones below are used.
+const props = defineProps({
+  notice: { type: Object, default: null },
+  badges: { type: Array, default: null },
+})
+
 // The current year, shown in the copyright line
 const currentYear = new Date().getFullYear()
 
-// Badges on the right side. NOTE: these claims come from the design. Make sure they are true before launch.
-const securityBadges = [
-  { icon: 'lock', label: 'PCI-DSS Compliant' },
+// The default notice on the left side (used by the checkout pages, which are a demo for now)
+const defaultNotice = {
+  icon: 'info',
+  title: 'Demo Checkout',
+  text: 'No real payments are processed yet. A secure payment provider will be connected before launch.',
+}
+
+// The default badges on the right side. NOTE: these claims come from the design. Make sure they are true before launch.
+const defaultBadges = [
   { icon: 'shield_with_heart', label: '14-Day Cohort Guarantee' },
   { icon: 'school', label: 'CEFR-Certified Seminars' },
 ]
+
+// The notice and badges to show: the ones from the page, or the default ones
+const noticeContent = computed(() => props.notice ?? defaultNotice)
+const securityBadges = computed(() => props.badges ?? defaultBadges)
 
 // Legal links. These pages do not exist yet, so for now they go to the top of the home page.
 const legalLinks = [
@@ -23,11 +39,11 @@ const legalLinks = [
       <div class="flex flex-col items-center justify-between gap-6 pb-6 md:flex-row">
         <div class="flex items-center gap-2">
           <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-deep-teal/15 text-deep-teal">
-            <AppIcon name="verified_user" class="text-[18px]" />
+            <AppIcon :name="noticeContent.icon" class="text-[18px]" />
           </span>
           <div>
-            <span class="block text-sm font-semibold text-oxford-blue">Bank-Grade 256-Bit SSL Protection</span>
-            <span class="text-sm text-slate-body/85">All session reservations and checkout transactions are fully encrypted.</span>
+            <span class="block text-sm font-semibold text-oxford-blue">{{ noticeContent.title }}</span>
+            <span class="text-sm text-slate-body/85">{{ noticeContent.text }}</span>
           </div>
         </div>
         <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-slate-body">

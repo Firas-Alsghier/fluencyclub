@@ -1,12 +1,20 @@
 <script setup>
-// The four small trust cards. Each has: icon (icon name), title and text.
+// A page can give its own cards. If it gives none (null), the default cards below are used.
+const props = defineProps({
+  items: { type: Array, default: null },
+})
+
+// The default four small trust cards. Each has: icon (icon name), title and text.
 // NOTE: these claims come from the design. Make sure they are true before launch.
-const trustBadges = [
+const defaultTrustBadges = [
   { icon: 'lock_clock', title: '30 Days Full Access', text: 'No recurring auto-charges' },
   { icon: 'groups_2', title: 'Max 6 Students', text: 'Guaranteed speaking time' },
   { icon: 'sentiment_very_satisfied', title: 'Cohort Guarantee', text: '14 days refund policy' },
   { icon: 'school', title: 'Certified Mentors', text: 'Native CELTA/Delta hosts' },
 ]
+
+// The cards to show: the ones from the page, or the default ones
+const trustBadges = computed(() => props.items ?? defaultTrustBadges)
 </script>
 
 <template>

@@ -27,6 +27,14 @@
   /* Shadows from DESIGN.md (Level 1 and Level 2) */
   --shadow-card: 0 2px 8px -2px rgb(0 32 70 / 0.04);
   --shadow-card-hover: 0 8px 24px -4px rgb(0 32 70 / 0.08);
+
+  /* Admin dashboard (from the admin DESIGN.md) */
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif; /* body text and tables in the admin area */
+  --color-amber-ink: #92400e; /* text on amber badges */
+  --color-error-soft: #ffdad6; /* background of red badges */
+  --color-on-error-soft: #93000a; /* text on red badges */
+  --shadow-admin: 0 1px 3px 0 rgb(0 32 70 / 0.04), 0 1px 2px -1px rgb(0 32 70 / 0.02);
+  --shadow-admin-hover: 0 4px 6px -1px rgb(0 32 70 / 0.06), 0 2px 4px -2px rgb(0 32 70 / 0.04);
 }
 
 @layer base {

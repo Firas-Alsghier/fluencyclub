@@ -6,11 +6,29 @@
 export const JOIN_PAGE_PATH = '/join'
 
 // Membership details shown in the pricing section
+// The price as a number. $49 is a TEMPORARY display value: change THIS number and everything updates.
+const PRICE_AMOUNT = 49
+
+// Processing fee in dollars (the design shows it as waived)
+const PROCESSING_FEE = 0
+
 export const MEMBERSHIP = {
-  // The price text. $49 is a TEMPORARY display value. Change it here later.
-  priceLabel: '$49',
+  // The price as a number (used for math)
+  priceAmount: PRICE_AMOUNT,
+  // The price as short text, for example "$49" (used on the landing page and the heading)
+  priceLabel: `$${PRICE_AMOUNT}`,
   // The small text shown next to the price
   priceNote: '/ one-time payment',
+  // The processing fee as a number
+  processingFee: PROCESSING_FEE,
+  // The total the student pays today (price + fee)
+  totalDue: PRICE_AMOUNT + PROCESSING_FEE,
+}
+
+// Turn a number into price text with cents, for example 49 becomes "$49.00"
+export function formatPrice(amount) {
+  // toFixed(2) always shows two decimals
+  return `$${amount.toFixed(2)}`
 }
 
 // WhatsApp and Telegram links. These are PLACEHOLDERS for now.
@@ -64,3 +82,8 @@ export const WALKTHROUGH_VIDEO = {
   // Length shown on the thumbnail, for example '1:14 min'. Leave empty until the video exists.
   durationLabel: '',
 }
+
+// ---- Confirmation page settings ----
+
+// The page that confirms a payment. A payment result with a reference sends the student here.
+export const SUCCESS_PAGE_PATH = '/join/success'

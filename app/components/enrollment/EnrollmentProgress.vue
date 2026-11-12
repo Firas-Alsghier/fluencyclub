@@ -11,11 +11,16 @@ const steps = [
   { number: 3, label: 'Confirmation' },
 ]
 
+// true when the student reached the last step (then every step is finished)
+const isFinished = computed(() => props.currentStep >= steps.length)
+
 // How full the progress bar is, from 0 to 100 percent
 const progressPercent = computed(() => (props.currentStep / steps.length) * 100)
 
 // Is a step finished ('done'), the current one ('current'), or still ahead ('upcoming')?
 function getStepState(stepNumber) {
+  // On the last step everything is finished
+  if (isFinished.value) return 'done'
   // Steps before the current step are done
   if (stepNumber < props.currentStep) return 'done'
   // The step we are on now
@@ -26,16 +31,16 @@ function getStepState(stepNumber) {
 
 // Tailwind classes for the small number circle, by state
 const circleClasses = {
-  done: 'bg-oxford-blue text-white',
+  done: 'bg-deep-teal text-white',
   current: 'bg-oxford-blue text-white',
   upcoming: 'bg-surface-mid text-oxford-blue',
 }
 
 // Tailwind classes for the step name, by state
 const labelClasses = {
-  done: 'font-semibold text-oxford-blue',
-  current: 'font-semibold text-oxford-blue',
-  upcoming: 'font-medium text-slate-body',
+  done: 'font-semibold text-deep-teal',
+  current: 'font-bold text-oxford-blue',
+  upcoming: 'font-medium text-slate-body opacity-70',
 }
 </script>
 
@@ -46,7 +51,7 @@ const labelClasses = {
       <li
         v-for="step in steps"
         :key="step.number"
-        class="flex items-center gap-1"
+        class="flex items-center gap-1.5"
         :class="labelClasses[getStepState(step.number)]"
         :aria-current="getStepState(step.number) === 'current' ? 'step' : undefined"
       >
@@ -59,10 +64,11 @@ const labelClasses = {
       </li>
     </ol>
 
-    <!-- Progress bar (decoration, the list above already tells the step) -->
+    <!-- Progress bar (decoration, the list above already tells the step). It turns teal at the end. -->
     <div class="h-1.5 w-full overflow-hidden rounded-full bg-surface-mid" aria-hidden="true">
       <div
-        class="h-full rounded-full bg-oxford-blue transition-all duration-500 ease-out"
+        class="h-full rounded-full transition-all duration-500 ease-out"
+        :class="isFinished ? 'bg-deep-teal' : 'bg-oxford-blue'"
         :style="{ width: `${progressPercent}%` }"
       ></div>
     </div>
